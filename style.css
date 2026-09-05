@@ -835,3 +835,120 @@ section {
   .lightbox-prev { left: 0.5rem; }
   .lightbox-next { right: 0.5rem; }
 }
+
+/* ============================================================
+   RESPONSIVE — MOBILE (max 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+
+  /* Cursor — sembunyikan di touch device */
+  .cursor, .cursor-trail { display: none; }
+  body { cursor: auto; }
+
+  /* Section padding lebih rapat */
+  section { padding: 4rem 1rem; }
+  .section-header { margin-bottom: 2.5rem; }
+
+  /* Navbar */
+  .navbar { padding: 0.8rem 1rem; }
+  .nav-logo { font-size: 1.4rem; }
+
+  /* Music player — lebih kecil, pojok bawah */
+  .music-player { bottom: 1rem; right: 1rem; padding: 0.5rem 0.8rem 0.5rem 0.5rem; }
+  .music-btn { width: 34px; height: 34px; min-width: 34px; font-size: 0.8rem; }
+  .music-player.expanded { max-width: 220px; }
+  .music-title { font-size: 0.75rem; }
+  .music-artist { font-size: 0.65rem; }
+
+  /* Hero */
+  .hero-ribbon { font-size: 0.7rem; letter-spacing: 1.5px; padding: 0.4rem 1.2rem; }
+  .hero-name { font-size: clamp(2.8rem, 13vw, 4.5rem); }
+  .hero-age-badge { font-size: 0.85rem; padding: 0.4rem 1.4rem; }
+  .hero-date { font-size: 0.85rem; margin-bottom: 1.8rem; }
+  .btn-primary, .btn-secondary { padding: 0.75rem 1.6rem; font-size: 0.85rem; }
+  .hero-scroll { display: none; }
+
+  /* Pesan */
+  .envelope { width: 160px; }
+  .envelope-flap { border-left-width: 80px; border-right-width: 80px; border-top-width: 56px; }
+  .message-card-inner { padding: 1.8rem 1.2rem; }
+  .message-card-inner p { font-size: 0.95rem; line-height: 1.85; }
+  .quote-icon { font-size: 2rem; }
+  .message-signature { font-size: 0.95rem; }
+
+  /* Galeri */
+  .gallery { padding-left: 0.8rem; padding-right: 0.8rem; }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 150px;
+    gap: 0.5rem;
+  }
+  .gallery-item.tall { grid-row: span 2; }
+  .gallery-item.wide { grid-column: span 2; grid-row: span 1; }
+  /* Overlay selalu tampil di HP (tidak ada hover) */
+  .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(180,20,100,0.6) 0%, transparent 60%); }
+  .gallery-overlay-content { transform: translateY(0); }
+  .gallery-overlay-content i { display: none; }
+  .gallery-overlay-content p { font-size: 1rem; }
+
+  /* Counter */
+  .together-counter { gap: 0.8rem; }
+  .counter-item { padding: 1.5rem 1.8rem; }
+  .counter-item span { font-size: 3rem; }
+  .counter-item label { font-size: 0.7rem; letter-spacing: 2px; }
+  .counter-heart { font-size: 1.1rem; }
+  .together-label { font-size: 0.88rem; padding: 0 1rem; }
+
+  /* Reasons */
+  .reasons-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .reason-card { padding: 1.5rem 1rem; }
+  .reason-icon-wrap { width: 54px; height: 54px; }
+  .reason-icon { font-size: 1.6rem; }
+  .reason-card h3 { font-size: 1.3rem; }
+  .reason-card p { font-size: 0.82rem; }
+
+  /* Footer */
+  .footer { padding: 3rem 1rem; }
+  .footer-hearts { font-size: 1.5rem; letter-spacing: 6px; }
+  .footer p { font-size: 0.9rem; }
+
+  /* Lightbox */
+  .lightbox img { max-width: 95vw; max-height: 70vh; border-radius: var(--radius-sm); }
+  .lightbox button { width: 40px; height: 40px; font-size: 0.9rem; }
+  .lightbox-prev { left: 0.3rem; }
+  .lightbox-next { right: 0.3rem; }
+  .lightbox p { font-size: 1.1rem; }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET (481px – 768px)
+   ============================================================ */
+@media (min-width: 481px) and (max-width: 768px) {
+
+  .cursor, .cursor-trail { display: none; }
+  body { cursor: auto; }
+
+  section { padding: 5rem 1.5rem; }
+
+  /* Hero */
+  .hero-name { font-size: clamp(3rem, 10vw, 5rem); }
+  .hero-scroll { display: none; }
+
+  /* Galeri */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
+    gap: 0.8rem;
+  }
+
+  /* Counter */
+  .counter-item { padding: 2rem 2.5rem; }
+
+  /* Reasons */
+  .reasons-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Overlay galeri selalu tampil */
+  .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(180,20,100,0.55) 0%, transparent 60%); }
+  .gallery-overlay-content { transform: translateY(0); }
+  .gallery-overlay-content i { display: none; }
+}
