@@ -149,21 +149,24 @@ document.querySelectorAll('a, button').forEach(el => {
 // ─────────────────────────────────────────────
 // 🎵 MUSIC PLAYER
 // ─────────────────────────────────────────────
-const audio     = document.getElementById('bgMusic');
-const musicBtn  = document.getElementById('musicBtn');
-const musicIcon = document.getElementById('musicIcon');
-const musicWave = document.getElementById('musicWave');
+const audio      = document.getElementById('bgMusic');
+const musicBtn   = document.getElementById('musicBtn');
+const musicIcon  = document.getElementById('musicIcon');
+const musicWave  = document.getElementById('musicWave');
+const musicPlayer = document.getElementById('musicPlayer');
 let playing = false;
 
 musicBtn.addEventListener('click', () => {
   if (playing) {
     audio.pause();
-    musicIcon.className = 'fa fa-music';
+    musicIcon.className = 'fa fa-play';
     musicWave.classList.remove('playing');
+    musicPlayer.classList.remove('expanded');
   } else {
     audio.play().catch(() => {});
     musicIcon.className = 'fa fa-pause';
     musicWave.classList.add('playing');
+    musicPlayer.classList.add('expanded');
   }
   playing = !playing;
 });

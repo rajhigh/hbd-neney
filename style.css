@@ -161,38 +161,62 @@ a:hover ~ .cursor, button:hover ~ .cursor { transform: translate(-50%,-50%) scal
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,0.3);
   border-radius: 50px;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 1.2rem 0.6rem 0.6rem;
   box-shadow: 0 8px 32px var(--shadow-deep);
+  transition: var(--transition);
+  max-width: 52px;
+  overflow: hidden;
+}
+.music-player.expanded {
+  max-width: 260px;
 }
 .music-btn {
   width: 40px; height: 40px;
+  min-width: 40px;
   background: linear-gradient(135deg, var(--pink), var(--pink-dark));
   border: none; border-radius: 50%;
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: var(--transition);
   box-shadow: 0 4px 16px var(--shadow-deep);
 }
 .music-btn:hover { transform: scale(1.1); }
-.music-wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
+.music-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.music-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.music-artist {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.65);
+}
+.music-wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; min-width: 24px; }
 .music-wave span {
   display: block; width: 3px;
   background: var(--pink-mid);
   border-radius: 2px;
-  animation: none;
+  height: 4px;
 }
 .music-wave.playing span { animation: wave 0.8s ease-in-out infinite alternate; }
-.music-wave span:nth-child(1) { height: 8px;  animation-delay: 0s; }
-.music-wave span:nth-child(2) { height: 16px; animation-delay: 0.1s; }
-.music-wave span:nth-child(3) { height: 12px; animation-delay: 0.2s; }
-.music-wave span:nth-child(4) { height: 18px; animation-delay: 0.15s; }
-.music-wave span:nth-child(5) { height: 10px; animation-delay: 0.05s; }
+.music-wave span:nth-child(1) { animation-delay: 0s; }
+.music-wave span:nth-child(2) { animation-delay: 0.1s; }
+.music-wave span:nth-child(3) { animation-delay: 0.2s; }
+.music-wave span:nth-child(4) { animation-delay: 0.15s; }
+.music-wave span:nth-child(5) { animation-delay: 0.05s; }
 @keyframes wave {
   from { height: 4px; }
   to   { height: 20px; }
