@@ -3,182 +3,272 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, Sayang 🎀</title>
+  <title>Happy Birthday, Nesya 🎀</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <!-- ✨ Floating particles -->
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Floating particles -->
   <div class="particles" id="particles"></div>
 
-  <!-- 🎀 Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-overlay"></div>
-    <img src="images/hero.jpg" alt="Foto Utama" class="hero-img" />
-    <div class="hero-content">
-      <p class="hero-sub">🎀 Selamat Ulang Tahun 🎀</p>
-      <h1 class="hero-name">Nesya Devita Nuryulita</h1>
-      <p class="hero-date">📅 6 September 2007</p>
-      <a href="#message" class="btn-scroll">Baca Pesan Cinta <i class="fa fa-heart"></i></a>
+  <!-- Confetti canvas -->
+  <canvas id="confetti" class="confetti-canvas"></canvas>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">N <span>&</span> A</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#message">Pesan</a></li>
+      <li><a href="#gallery">Galeri</a></li>
+      <li><a href="#reasons">Cinta</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── MUSIC PLAYER ── -->
+  <div class="music-player" id="musicPlayer">
+    <button class="music-btn" id="musicBtn" title="Play / Pause musik">
+      <i class="fa fa-music" id="musicIcon"></i>
+    </button>
+    <div class="music-wave" id="musicWave">
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
-    <div class="scroll-down">
-      <i class="fa fa-chevron-down"></i>
+    <!-- Ganti src dengan link lagu .mp3 kamu sendiri -->
+    <audio id="bgMusic" loop>
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="images/hero.jpg" alt="Nesya" class="hero-img" />
+      <div class="hero-overlay"></div>
+      <div class="hero-glitter" id="heroGlitter"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-ribbon">🎀 Selamat Ulang Tahun 🎀</div>
+      <h1 class="hero-name">Nesya Devita<br/><span>Nuryulita</span></h1>
+      <div class="hero-age-badge">19 Tahun ✨</div>
+      <p class="hero-date"><i class="fa fa-calendar-heart"></i> 6 September 2007</p>
+      <div class="hero-buttons">
+        <a href="#message" class="btn-primary">Baca Pesanku <i class="fa fa-heart"></i></a>
+        <a href="#gallery" class="btn-secondary">Lihat Galeri <i class="fa fa-images"></i></a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
-  <!-- 💌 Pesan Cinta -->
+  <!-- ── PESAN CINTA ── -->
   <section class="message" id="message">
     <div class="section-header">
+      <div class="section-ornament">✦ ✦ ✦</div>
       <span class="tag">💌 Untuk Kamu</span>
       <h2>Pesan dari Hatiku</h2>
     </div>
-    <div class="message-card">
-      <div class="quote-icon"><i class="fa fa-quote-left"></i></div>
-      <p>
-        Sayang, di hari yang spesial ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu.
-        Setiap hari bersamamu adalah anugerah yang tidak ternilai. Senyumanmu adalah hal pertama
-        yang aku pikirkan setiap pagi, dan rindumu yang membuat hariku selalu berwarna.
-      </p>
-      <p>
-        Kamu bukan hanya pacarku, kamu adalah rumah bagiku, tempat aku pulang, dan alasan
-        aku percaya bahwa keajaiban itu nyata. Semoga di usiamu yang bertambah ini, semua
-        impianmu terwujud, dan kebahagiaan selalu menemanimu.
-      </p>
-      <p>
-        Aku mencintaimu lebih dari kata-kata bisa menjelaskan. Selamat ulang tahun, sayangku. 🎂
-      </p>
-      <div class="message-signature">— Dengan cinta, <strong>Aurell Rajwa Afianto</strong> 💕</div>
+    <div class="envelope-wrap" id="envelopeWrap">
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="env-heart">💌</div>
+          <p class="env-hint">Klik untuk membuka</p>
+        </div>
+      </div>
+    </div>
+    <div class="message-card" id="messageCard">
+      <div class="message-card-inner">
+        <div class="quote-icon"><i class="fa fa-quote-left"></i></div>
+        <p>
+          Sayang, di hari yang spesial ini, aku ingin kamu tahu betapa bersyukurnya aku memilikimu.
+          Setiap hari bersamamu adalah anugerah yang tidak ternilai. Senyumanmu adalah hal pertama
+          yang aku pikirkan setiap pagi, dan rindumu yang membuat hariku selalu berwarna.
+        </p>
+        <p>
+          Kamu bukan hanya pacarku, kamu adalah rumah bagiku, tempat aku pulang, dan alasan
+          aku percaya bahwa keajaiban itu nyata. Semoga di usiamu yang bertambah ini, semua
+          impianmu terwujud, dan kebahagiaan selalu menemanimu.
+        </p>
+        <p>
+          Aku mencintaimu lebih dari kata-kata bisa menjelaskan. Selamat ulang tahun, sayangku. 🎂
+        </p>
+        <div class="message-divider">
+          <span>🌸</span><span>💕</span><span>🌸</span>
+        </div>
+        <div class="message-signature">— Dengan cinta, <strong>Aurell Rajwa Afianto</strong> 💕</div>
+      </div>
     </div>
   </section>
 
-  <!-- 🎞️ Galeri Foto -->
+  <!-- ── GALERI ── -->
   <section class="gallery" id="gallery">
     <div class="section-header">
+      <div class="section-ornament">✦ ✦ ✦</div>
       <span class="tag">📸 Ur Pictures</span>
       <h2>My Mine Gwehj</h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item" data-caption="Senyummu">
+      <div class="gallery-item tall" data-caption="Senyummu">
         <img src="images/gallery1.jpg" alt="Kenangan 1" />
         <div class="gallery-overlay">
-          <p>Senyummu</p>
+          <div class="gallery-overlay-content">
+            <i class="fa fa-expand"></i>
+            <p>Senyummu</p>
+          </div>
         </div>
       </div>
       <div class="gallery-item" data-caption="Matamu">
         <img src="images/gallery2.jpg" alt="Kenangan 2" />
         <div class="gallery-overlay">
-          <p>Matamu</p>
+          <div class="gallery-overlay-content">
+            <i class="fa fa-expand"></i>
+            <p>Matamu</p>
+          </div>
         </div>
       </div>
       <div class="gallery-item" data-caption="Perhatianmu">
         <img src="images/gallery3.jpg" alt="Kenangan 3" />
         <div class="gallery-overlay">
-          <p>Perhatianmu</p>
+          <div class="gallery-overlay-content">
+            <i class="fa fa-expand"></i>
+            <p>Perhatianmu</p>
+          </div>
         </div>
       </div>
-      <div class="gallery-item" data-caption="Kasih Sayangmu">
+      <div class="gallery-item wide" data-caption="Kasih Sayangmu">
         <img src="images/gallery4.jpg" alt="Kenangan 4" />
         <div class="gallery-overlay">
-          <p>Kasih Sayangmu</p>
+          <div class="gallery-overlay-content">
+            <i class="fa fa-expand"></i>
+            <p>Kasih Sayangmu</p>
+          </div>
         </div>
       </div>
       <div class="gallery-item" data-caption="Tawamu">
         <img src="images/gallery5.jpg" alt="Kenangan 5" />
         <div class="gallery-overlay">
-          <p>Tawamu</p>
+          <div class="gallery-overlay-content">
+            <i class="fa fa-expand"></i>
+            <p>Tawamu</p>
+          </div>
         </div>
       </div>
       <div class="gallery-item" data-caption="Imutmu">
         <img src="images/gallery6.jpg" alt="Kenangan 6" />
         <div class="gallery-overlay">
-          <p>Imutmu</p>
+          <div class="gallery-overlay-content">
+            <i class="fa fa-expand"></i>
+            <p>Imutmu</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ⏳ Countdown -->
+  <!-- ── COUNTER ── -->
   <section class="countdown-section" id="countdown">
+    <div class="countdown-bg-text">LOVE</div>
     <div class="section-header light">
-      <span class="tag">🎂 Hari Spesial</span>
+      <div class="section-ornament light">✦ ✦ ✦</div>
+      <span class="tag light-tag">🎂 Hari Spesial</span>
       <h2>Sudah Sekian Lama Kita Bersama</h2>
     </div>
     <div class="together-counter">
       <div class="counter-item">
-        <span id="days-together">0</span>
-        <label>Hari</label>
-      </div>
-      <div class="counter-item">
-        <span id="months-together">0</span>
-        <label>Bulan</label>
-      </div>
-      <div class="counter-item">
+        <div class="counter-glow"></div>
         <span id="years-together">0</span>
         <label>Tahun</label>
       </div>
+      <div class="counter-heart">💕</div>
+      <div class="counter-item">
+        <div class="counter-glow"></div>
+        <span id="months-together">0</span>
+        <label>Bulan</label>
+      </div>
+      <div class="counter-heart">💕</div>
+      <div class="counter-item">
+        <div class="counter-glow"></div>
+        <span id="days-together">0</span>
+        <label>Hari</label>
+      </div>
     </div>
-    <p class="together-label">Sejak kita pertama kali bersama 💕</p>
+    <p class="together-label">Sejak 15 Juni 2026, hari kita memulai segalanya 💕</p>
   </section>
 
-  <!-- 💝 Alasan Mencintaimu -->
+  <!-- ── ALASAN MENCINTAI ── -->
   <section class="reasons" id="reasons">
     <div class="section-header">
+      <div class="section-ornament">✦ ✦ ✦</div>
       <span class="tag">💝 Kenapa Aku Mencintaimu</span>
       <h2>Hal-Hal yang Membuatku Jatuh Cinta</h2>
     </div>
     <div class="reasons-grid">
       <div class="reason-card">
-        <div class="reason-icon">😊</div>
+        <div class="reason-icon-wrap"><div class="reason-icon">😊</div></div>
         <h3>Senyumanmu</h3>
         <p>Senyumanmu bisa menerangi hari-hariku yang paling gelap sekalipun.</p>
       </div>
       <div class="reason-card">
-        <div class="reason-icon">🤗</div>
+        <div class="reason-icon-wrap"><div class="reason-icon">🤗</div></div>
         <h3>Pelukanmu</h3>
         <p>Pelukan dari kamu adalah tempat paling nyaman di dunia ini.</p>
       </div>
       <div class="reason-card">
-        <div class="reason-icon">💬</div>
+        <div class="reason-icon-wrap"><div class="reason-icon">💬</div></div>
         <h3>Tawamu</h3>
         <p>Tawa lepasmu selalu berhasil membuatku ikut bahagia tanpa alasan.</p>
       </div>
       <div class="reason-card">
-        <div class="reason-icon">🌟</div>
+        <div class="reason-icon-wrap"><div class="reason-icon">🌟</div></div>
         <h3>Semangatmu</h3>
         <p>Semangat dan tekadmu selalu menginspirasi dan memotivasiku.</p>
       </div>
       <div class="reason-card">
-        <div class="reason-icon">🩷</div>
+        <div class="reason-icon-wrap"><div class="reason-icon">🩷</div></div>
         <h3>Kebaikanmu</h3>
         <p>Hati yang tulus dan penuh kasih sayang yang kamu miliki.</p>
       </div>
       <div class="reason-card">
-        <div class="reason-icon">✨</div>
+        <div class="reason-icon-wrap"><div class="reason-icon">✨</div></div>
         <h3>Dirimu Seutuhnya</h3>
         <p>Aku mencintai segala hal tentangmu, tanpa terkecuali.</p>
       </div>
     </div>
   </section>
 
-  <!-- 🎉 Footer -->
+  <!-- ── FOOTER ── -->
   <footer class="footer">
-    <div class="footer-hearts">
-      <span>🩷</span><span>💕</span><span>🎀</span><span>💕</span><span>🩷</span>
+    <div class="footer-bg-text">HBD</div>
+    <div class="footer-inner">
+      <div class="footer-hearts">
+        <span>🩷</span><span>💕</span><span>🎀</span><span>💕</span><span>🩷</span>
+      </div>
+      <h3>Happy Birthday, Nesya! 🎂</h3>
+      <p>Semoga hari ini dan setiap hari menjadi hari yang indah untukmu.</p>
+      <p>I love you more than words can say 💕</p>
+      <div class="footer-divider"></div>
+      <p class="footer-love">Made with <i class="fa fa-heart"></i> by <strong>Aurell Rajwa Afianto</strong></p>
     </div>
-    <h3>Happy Birthday, Sayang! 🎂</h3>
-    <p>Semoga hari ini dan setiap hari menjadi hari yang indah untukmu.</p>
-    <p class="footer-love">Made with <i class="fa fa-heart" style="color:#ff6b9d"></i> by <strong>Aurell Rajwa Afianto</strong></p>
   </footer>
 
-  <!-- 🎆 Lightbox -->
+  <!-- ── LIGHTBOX ── -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose"><i class="fa fa-times"></i></button>
     <button class="lightbox-prev" id="lightboxPrev"><i class="fa fa-chevron-left"></i></button>
     <button class="lightbox-next" id="lightboxNext"><i class="fa fa-chevron-right"></i></button>
-    <img src="" alt="" id="lightboxImg" />
+    <div class="lightbox-img-wrap">
+      <img src="" alt="" id="lightboxImg" />
+    </div>
     <p id="lightboxCaption"></p>
+    <div class="lightbox-dots" id="lightboxDots"></div>
   </div>
 
   <script src="script.js"></script>
